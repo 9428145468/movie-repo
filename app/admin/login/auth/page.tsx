@@ -13,7 +13,7 @@ const LoginPage = () => {
   }, []);
 
   if (!mounted) {
-    return null; // or a loading spinner if you prefer
+    return null; 
   }
 
   return (

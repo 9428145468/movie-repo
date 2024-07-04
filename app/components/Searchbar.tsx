@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import styles from '/Users/preyasmistry/Downloads/movie-booking-project/mbp/styles/Searchbar.module.css'; 
+import styles from '../Searchbar.module.css'; 
 
 interface SearchbarProps {
   onSearch?: (query: string) => void;
