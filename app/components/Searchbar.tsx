@@ -29,7 +29,7 @@ const Searchbar: React.FC<SearchbarProps> = ({ onSearch }) => {
           value={query}
           onChange={handleSearchChange}
           placeholder="Search for movies, events, etc."
-          className={`px-4 py-2 rounded-xl bg-stone-800 text-natural-200 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-regal-blue-400 w-1/2 ${styles.searchInput}`} // Use the CSS module here
+          className={`px-4 py-2 rounded-xl bg-stone-800 text-natural-200 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-regal-blue-400 w-1/2 ${styles.searchInput}`} // Ensure styles.searchInput exists in your CSS module
         />
       </form>
     </>

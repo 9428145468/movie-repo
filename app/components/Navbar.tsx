@@ -10,24 +10,37 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { useRouter } from "next/navigation"; // Import useRouter from next/router
+import { useRouter } from "next/navigation"; 
+import { axios } from "@/utils";
 
 const Navbar: React.FC = () => {
-  const router = useRouter(); // Use useRouter inside the component
+  const router = useRouter(); 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
 
-  const handleLogin = (option: "admin" | "user") => {
-    // Simulate login process (replace with actual login logic)
-    if (option === "admin") {
-      router.push("/admin/login/auth"); // Navigate to admin login page
-    } else if (option === "user") {
-      router.push("/client/login/auth"); // Navigate to user login page
+  const handleLogin = async (option: "admin" | "user") => {
+    try {
+      const response = await axios.post("/api/login", {
+        userType: option,  // Example: sending admin or user
+        // Add other credentials as needed
+      });
+
+      const userData = response.data;
+
+      // Update state and UI based on successful login
+      setUsername(userData.username);
+      setIsLoggedIn(true);
+
+
+      router.push("/");
+    } catch (error) {
+      console.error("Login failed:", error);
+      // Handle login error (display message, reset state, etc.)
     }
   };
 
   const handleLogout = () => {
-    // Simulate logout process (replace with actual logout logic)
+    // Simulate logout process
     setUsername("");
     setIsLoggedIn(false);
   };
@@ -96,7 +109,7 @@ const Navbar: React.FC = () => {
             <DropdownMenu>
               <DropdownMenuTrigger>
                 <div>
-                <Button variant="ghost">Login</Button>
+                  <Button variant="ghost">Login</Button>
                 </div>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-stone-800 text-stone-300 border-none shadow-md shadow-stone-950">
