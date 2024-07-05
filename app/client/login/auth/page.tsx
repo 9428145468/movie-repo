@@ -59,7 +59,7 @@ const LoginForm = ({
 
     try {
       const response = await axios.post(
-        "gttp://localhost:6000/users/login",
+        "http://localhost:6000/users/login",
         {
           email,
           password,
@@ -117,6 +117,9 @@ const LoginForm = ({
         >
           Don't have an account?
         </button>
+      </div>
+      <div>
+        
       </div>
     </div>
   );

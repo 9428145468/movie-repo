@@ -86,12 +86,12 @@ const HomePage: React.FC = () => {
           <CarouselNext />
         </Carousel>
 
-        <div className="relative w-full h-0" style={{ paddingBottom: "9%" }}>
+        <div className="relative w-full h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 my-10">
           <Image
             src="/images/ad.jpeg"
-            alt="Advertisement"
-            className="absolute top-0 left-0 w-full h-full rounded-[30px] object-cover pt-4 pr-4 pl-4 pb-4 mt-2 mb-2"
-            layout="fill"
+            alt="Rectangle Horizontal Image"
+            className="w-full h-full rounded-xl object-cover"
+            fill
           />
         </div>
 
