@@ -59,7 +59,7 @@ const LoginForm = ({
 
     try {
       const response = await axios.post(
-        "/users/login",
+        "gttp://localhost:6000/users/login",
         {
           email,
           password,
@@ -137,7 +137,7 @@ const SignupForm = ({
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/users/register", {
+      const response = await axios.post("http://localhost:6000/users/register", {
         name,
         email,
         phoneNumber,
