@@ -10,37 +10,24 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { useRouter } from "next/navigation"; 
-import { axios } from "@/utils";
+import { useRouter } from "next/navigation";
 
 const Navbar: React.FC = () => {
   const router = useRouter(); 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
 
-  const handleLogin = async (option: "admin" | "user") => {
-    try {
-      const response = await axios.post("/api/login", {
-        userType: option,  // Example: sending admin or user
-        // Add other credentials as needed
-      });
-
-      const userData = response.data;
-
-      // Update state and UI based on successful login
-      setUsername(userData.username);
-      setIsLoggedIn(true);
-
-
-      router.push("/");
-    } catch (error) {
-      console.error("Login failed:", error);
-      // Handle login error (display message, reset state, etc.)
+  const handleLogin = (option: "admin" | "user") => {
+    // Simulate login process (replace with actual login logic)
+    if (option === "admin") {
+      router.push("/admin/login/auth"); // Navigate to admin login page
+    } else if (option === "user") {
+      router.push("/client/login/auth"); // Navigate to user login page
     }
   };
 
   const handleLogout = () => {
-    // Simulate logout process
+    // Simulate logout process (replace with actual logout logic)
     setUsername("");
     setIsLoggedIn(false);
   };
@@ -49,9 +36,9 @@ const Navbar: React.FC = () => {
     <>
       <nav className="relative bg-stone-950 text-stone-300 px-4 py-2 flex justify-between items-center backdrop-filter backdrop-blur-lg shadow-lg">
         <Link href="/">
-          <h1 className="text-2xl text-yellow-300 font-bold cursor-pointer">
+          {/* <h1 className="text-2xl text-yellow-300 font-bold cursor-pointer"> */}
             movieCo
-          </h1>
+          {/* </h1> */}
         </Link>
 
         <SearchBar />
@@ -109,7 +96,7 @@ const Navbar: React.FC = () => {
             <DropdownMenu>
               <DropdownMenuTrigger>
                 <div>
-                  <Button variant="ghost">Login</Button>
+                <Button variant="ghost">Login</Button>
                 </div>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-stone-800 text-stone-300 border-none shadow-md shadow-stone-950">
